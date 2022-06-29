@@ -58,8 +58,8 @@ services:
       - app-network
   registration:
     image: flav1ann/msregistery:v1
-    depends_on:
-      - configuration
+#    depends_on:
+#      - configuration
 #    command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar msregistry.jar"
     deploy:
       placement:
