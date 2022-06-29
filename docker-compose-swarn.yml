@@ -78,7 +78,7 @@ services:
     image: flav1ann/angular_compte:latest
     depends_on:
       - registration
-    command: sh -c "/wait && nginx -g daemon off;"
+    command: sh -c "/wait && nginx -g daemon off"
     deploy:
       placement:
         constraints:
