@@ -19,7 +19,6 @@ services:
       - WAIT_HOSTS_TIMEOUT=300
       - WAIT_SLEEP_INTERVAL=30
       - WAIT_HOST_CONNECT_TIMEOUT=30
-      - eureka.instance.preferIpAddress=true
     networks:
       - app-network
   configuration:
@@ -53,7 +52,6 @@ services:
       - WAIT_HOSTS_TIMEOUT=300
       - WAIT_SLEEP_INTERVAL=30
       - WAIT_HOST_CONNECT_TIMEOUT=30
-      - eureka.instance.preferIpAddress=true
     networks:
       - app-network
   registration:
