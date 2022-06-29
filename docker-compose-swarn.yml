@@ -39,7 +39,7 @@ services:
     hostname: gateway
     depends_on:
       - registration
-    command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar MsRegistry.jar"
+    command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar msGateway.jar"
     deploy:
       placement:
         constraints:
