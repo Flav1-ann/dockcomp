@@ -22,7 +22,7 @@ services:
     networks:
       - app-network
   configuration:
-    image: flav1ann/msconfig:v1
+    image: thomaslpro/config-service
     deploy:
       placement:
         constraints:
@@ -44,7 +44,7 @@ services:
         constraints:
           - node.role == worker
     ports:
-      - 8099:9999
+      - 9999:9999
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://registration:8761/eureka
@@ -56,9 +56,9 @@ services:
       - app-network
   registration:
     image: thomaslpro/registration-service
-    # depends_on:
-    #   - configuration
-    # command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar registration.jar"
+    depends_on:
+      - configuration
+    command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar registration.jar"
     deploy:
       placement:
         constraints:
