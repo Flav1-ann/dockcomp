@@ -5,6 +5,7 @@ services:
     hostname: compte
     depends_on:
       - registration
+      - docker-mysql
     command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar msCompte.jar"
     deploy:
       placement:
@@ -84,6 +85,19 @@ services:
       - WAIT_HOSTS_TIMEOUT=300
       - WAIT_SLEEP_INTERVAL=30
       - WAIT_HOST_CONNECT_TIMEOUT=30
+    networks:
+      - app-network
+  docker-mysql:
+    image: mysql:8.0
+    container_name: docker-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myresto
+      MYSQL_USER: spring
+      MYSQL_PASSWORD: spring
+    ports:
+      - "3306:3306"
     networks:
       - app-network
 networks:
