@@ -8,6 +8,8 @@ services:
       - docker-mysql
     command: sh -c "/wait && java -server -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport -jar msCompte.jar"
     deploy:
+      mode: replicated
+      replicas: 2
       placement:
         constraints:
           - node.role == worker
@@ -89,6 +91,7 @@ services:
       - app-network
   docker-mysql:
     image: mysql:8.0
+    container_name: docker-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
